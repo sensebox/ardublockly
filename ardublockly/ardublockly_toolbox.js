@@ -12,7 +12,7 @@ var Ardublockly = Ardublockly || {};
 Ardublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
-'<category id="SenseBox-Sensoren" name="SenseBox-Sensoren">' +
+'<category id="senseBox-Sensoren" name="senseBox Sensoren">' +
 '      <block type="sensebox_sensor_temp_hum"></block>' +
 '      <block type="sensebox_sensor_lux"></block>' +
 '      <block type="sensebox_sensor_uv"></block>' +
@@ -21,11 +21,10 @@ Ardublockly.TOOLBOX_XML =
 '      <block type="sensebox_sensor_ir_dist"></block>' +
 '      <block type="sensebox_sensor_sound"></block>' +
 '    </category>' +
-'    <category id="senseBox-Grundlagen" name="senseBox-Grundlagen">' +
+'    <category id="senseBox-Grundlagen" name="senseBox Grundlagen">' +
 '      <block type="sensebox_foto"></block>' +
 '      <block type="sensebox_button"></block>' +
 '      <block type="sensebox_poti"></block>' +
-'      <block type="sensebox_serial_print"></block>' +
 '      <block type="sensebox_led"></block>' +
 '      <block type="sensebox_piezo_buzzer"></block>' +
 '      <block type="sensebox_rgb_led">' +
@@ -46,12 +45,17 @@ Ardublockly.TOOLBOX_XML =
 '        </value>' +
 '      </block>' +
 '    </category>' +
-'    <category id="senseBox-Shields" name="senseBox-Shields">' +
-'      <block type="sensebox_shiel_wifi"></block>' +
-'      <block type="sensebox_safe_to_sd"></block>' +
+'    <category id="senseBox-Shields" name="senseBox Shields">' +
+'      <block type="sensebox_shield_wifi"></block>' +
 '      <block type="sensebox_time"></block>' +
 '      <block type="sensebox_shield_ethernet"></block>' +
 '   </category>' +
+'   <category id="senseBox-output" name="senseBox Ausgabe">' +
+'      <block type="sensebox_print_osm"></block>' +
+'      <block type="sensebox_safe_to_sd"></block>' +
+'      <block type="sensebox_serial_print"></block>' +
+'   </category>' +
+
 '  <sep></sep>' +
 '  <category id="catLogic" name="Logic">' +
 '    <block type="controls_if"></block>' +
@@ -227,6 +231,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="io_notone"></block>' +
 '  </category>' +
 '  <sep></sep>' +
+/**
 '  <category id="catMotors" name="Motors">' +
 '    <block type="servo_write">' +
 '      <value name="SERVO_ANGLE">' +
@@ -272,4 +277,5 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="spi_transfer"></block>' +
 '    <block type="spi_transfer_return"></block>' +
 '  </category>' +
+**/
 '</xml>';

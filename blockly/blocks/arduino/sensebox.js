@@ -66,7 +66,7 @@ Blockly.Blocks['sensebox_sensor_pressure'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Luftdruck Sensor");
-    this.setOutput(true, "Number");
+       this.setOutput(true, "Number");
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setTooltip('Dieser Sensor misst den Luftdruck');
     this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/luftdruck.html');
@@ -117,23 +117,6 @@ Blockly.Blocks['sensebox_time'] = {
   }
 };
 
-Blockly.Blocks['sensebox_safe_to_sd'] = {
-  init: function() {
-    this.appendValueInput("TEXT")
-        .setCheck(null)
-        .appendField("Auf SD Karte speichern");
-    this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Dateiname:")
-        .appendField(new Blockly.FieldTextInput("TXT"), "txt");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip('Dieser Block speichert Daten auf einer SD Karte.');
-    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/datenlogger.html');
-  }
-};
-
 Blockly.Blocks['sensebox_shield_ethernet'] = {
   init: function() {
     this.appendDummyInput()
@@ -146,7 +129,7 @@ Blockly.Blocks['sensebox_shield_ethernet'] = {
   }
 };
 
-Blockly.Blocks['sensebox_shiel_wifi'] = {
+Blockly.Blocks['sensebox_shield_wifi'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("WLAN Shield");
@@ -165,6 +148,7 @@ Blockly.Blocks['sensebox_shiel_wifi'] = {
     this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
   }
 };
+
 
 /*
 ----------------------------------Basics--------------------------------------------------
@@ -214,26 +198,6 @@ Blockly.Blocks['sensebox_rgb_led'] = {
   }
 };
 
-
-Blockly.Blocks['sensebox_serial_print'] = {
-  init: function() {
-    this.appendDummyInput()
-       .appendField("Auf Kommandozeile ausgeben");
-    this.appendValueInput("TEXT")
-       .setCheck(null);
-    this.appendDummyInput("CheckboxText")
-      .appendField("Zeilenumbruch");
-    this.appendDummyInput("Checkbox")
-       .appendField(new Blockly.FieldCheckbox("TRUE"), "LINEBREAK");
-       //.appendField("Zeilenumbruch");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip('Dieser Block gibt Text über den seriellen Monitor aus');
-    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/der_serielle_monitor.html');
-  }
-};
-
 Blockly.Blocks['sensebox_led'] = {
     init: function() {
     this.setColour(Blockly.Blocks.sensebox.HUE);
@@ -275,5 +239,58 @@ Blockly.Blocks['sensebox_piezo_buzzer'] = {
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setTooltip('Gibt einen Ton aus');
     this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/summer.html');
+  }
+};
+/*
+----------------------------------Ausgabe--------------------------------------------------
+*/
+Blockly.Blocks['sensebox_serial_print'] = {
+  init: function() {
+    this.appendValueInput("TEXT")
+       .setCheck(null)
+       .appendField("Auf Kommandozeile ausgeben");
+    this.appendDummyInput("CheckboxText")
+      .appendField("Zeilenumbruch")
+       .appendField(new Blockly.FieldCheckbox("TRUE"), "LINEBREAK");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setTooltip('Dieser Block gibt Text über den seriellen Monitor aus');
+    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/der_serielle_monitor.html');
+  }
+};
+
+Blockly.Blocks['sensebox_print_osm'] = {
+  init: function() {
+    this.appendDummyInput()
+       .appendField("Auf OpensenseMap ausgeben");
+    this.appendDummyInput()
+       .appendField("(WiFi oder Ethernetshield notwendig)");
+    this.appendValueInput("TEXT")
+       .setCheck(null)
+       .appendField("ID")
+       .appendField(new Blockly.FieldTextInput("ID"), "id");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setTooltip('');
+    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
+  }
+};
+
+Blockly.Blocks['sensebox_safe_to_sd'] = {
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck(null)
+        .appendField("Auf SD Karte speichern");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Dateiname:")
+        .appendField(new Blockly.FieldTextInput("TXT"), "txt");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setTooltip('Dieser Block speichert Daten auf einer SD Karte.');
+    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/datenlogger.html');
   }
 };

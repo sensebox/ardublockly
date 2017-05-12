@@ -19,12 +19,12 @@ Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'lux_sensor.begin();';
 
 Blockly.Arduino.sensebox_sensor_uv = function() {
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-Blockly.Arduino.definitions_['define_uv'] = 'VEML6070 uv_sensor;';
+Blockly.Arduino.definitions_['define_uv'] = 'VEML6070 uv_sensor; \n';
 Blockly.Arduino.setups_['sensebox_uv_sensor'] = 'uv_sensor.begin();';
   var code ='uv_sensor.getUV()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
-Blockly.Arduino.sensebox_sensor_pressure = function() {
+Blockly.Arduino.sensebox_sensor_pressure = function() {  
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
 Blockly.Arduino.definitions_['define_pressure'] = 'BMP280 bmp_sensor;\n';
 Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'bmp_sensor.begin();';
@@ -35,7 +35,7 @@ Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'bmp_sensor.begin();';
 Blockly.Arduino.sensebox_sensor_temp_hum = function(){
   var dropdown_name = this.getFieldValue('NAME');
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-  Blockly.Arduino.definitions_['define_hdc'] = 'HDC100X hdc(0x43);\n';
+  Blockly.Arduino.definitions_['define_hdc'] = 'HDC100X hdc();\n';
   Blockly.Arduino.setups_['sensebox_sensor_temp_hum'] = 'hdc.begin();\n';
   var code = 'hdc.get'+dropdown_name+'()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
@@ -51,7 +51,8 @@ Blockly.Arduino.sensebox_sensor_ultrasonic_ranger = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.sensebox_sensor_sound = function() {
+Blockly.Arduino.sensebox_sensor_sound = function() {  
+  
   var dropdown_pin = this.getFieldValue('PIN');
   var code = 'analogRead('+dropdown_pin+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -62,6 +63,7 @@ Blockly.Arduino.sensebox_sensor_ir_dist = function() {
   var code = '4800/(analogRead('+dropdown_pin+')-20)';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
 /*
 ----------------------------------Shields--------------------------------------------------
 */
@@ -87,33 +89,16 @@ Blockly.Arduino.sensebox_time = function() {
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.sensebox_safe_to_sd = function() {
-Blockly.Arduino.definitions_['define_sd'] = '#include <SPI.h> // wichtige Libraries für das Speichern von Daten auf SD-Karte\n #include <SD.h>';
-Blockly.Arduino.setups_['sensebox_sd'] = 'SD.begin(4);';
-var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
-var code ='File dataFile = SD.open("datalog.txt", FILE_WRITE);\n'
-code +='dataFile.println('+ text +');\n'
-code +='dataFile.close();\n'
-return code;
+Blockly.Arduino.sensebox_shield_wifi = function() {
+  var pw = this.getFieldValue('pw');
+  var net_id = this.getFieldValue('net_id');
+  var code = ''+ pw+'+'+net_id;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
 /*
 ----------------------------------Basics--------------------------------------------------
 */
-
-
-Blockly.Arduino.sensebox_serial_print = function() {
-Blockly.Arduino.setups_['sensebox_serial_print'] = '//Setup Serial Print\n Serial.begin(9600);\n';
-var linebreak =  this.getFieldValue('LINEBREAK');
-if(linebreak =="TRUE"){
-  linebreak = "ln";
-}else{
-  linebreak = "";
-}
-var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
-var code ='Serial.print'+ linebreak +'(' + text + ');\n';
-return code;
-};
-
 Blockly.Arduino.sensebox_led = function() {
   var dropdown_pin = this.getFieldValue('PIN');
   var dropdown_stat = this.getFieldValue('STAT');
@@ -154,7 +139,6 @@ Blockly.Arduino.sensebox_foto = function() {
 Blockly.Arduino.sensebox_rgb_led = function() {
 
   var dropdown_pin = this.getFieldValue('PIN');
-
   var red = Blockly.Arduino.valueToCode(this, 'RED', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var green = Blockly.Arduino.valueToCode(this, 'GREEN', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var blue = Blockly.Arduino.valueToCode(this, 'BLUE', Blockly.Arduino.ORDER_ATOMIC) || '0'
@@ -164,4 +148,37 @@ Blockly.Arduino.sensebox_rgb_led = function() {
     var code = 'rgb_led_'+ dropdown_pin +'.setPixelColor(0,rgb_led_'+ dropdown_pin +'.Color('+ red +',' + green +',' + blue +'));\n';
   code += 'rgb_led_'+ dropdown_pin +'.show();';
   return code;
+};
+/*
+----------------------------------Ausgabe--------------------------------------------------
+*/
+Blockly.Arduino.sensebox_serial_print = function() {
+Blockly.Arduino.setups_['sensebox_serial_print'] = '//Setup Serial Print\n Serial.begin(9600);\n';
+var linebreak =  this.getFieldValue('LINEBREAK');
+if(linebreak =="TRUE"){
+  linebreak = "ln";
+}else{
+  linebreak = "";
+}
+var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+var code ='Serial.print'+ linebreak +'(' + text + ');\n';
+return code;
+};
+
+Blockly.Arduino.sensebox_print_osm = function() {
+var id = this.getFieldValue('id');
+var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+var code = 'postFloatValue((float)'+text+', 4, '+id+');';
+return code;
+};
+
+Blockly.Arduino.sensebox_safe_to_sd = function() {
+var filename =  this.getFieldValue('txt');
+Blockly.Arduino.definitions_['define_sd'] = '#include <SPI.h> // wichtige Libraries für das Speichern von Daten auf SD-Karte\n #include <SD.h>';
+Blockly.Arduino.setups_['sensebox_sd'] = 'SD.begin(4);';
+var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+var code ='File dataFile = SD.open("'+filename+'.txt", FILE_WRITE);\n'
+code +='dataFile.println('+ text +');\n'
+code +='dataFile.close();\n'
+return code;
 };
