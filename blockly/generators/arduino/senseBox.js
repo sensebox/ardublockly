@@ -11,7 +11,7 @@ goog.require('Blockly.Arduino');
 */
 Blockly.Arduino.sensebox_sensor_lux = function() {
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-Blockly.Arduino.definitions_['define_lux'] = 'TSL45315 lux_sensor;\n';
+Blockly.Arduino.definitions_['define_lux'] = 'TSL45315 lux_sensor;';
 Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'lux_sensor.begin();';
   var code ='lux_sensor.getLux()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
@@ -19,14 +19,14 @@ Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'lux_sensor.begin();';
 
 Blockly.Arduino.sensebox_sensor_uv = function() {
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-Blockly.Arduino.definitions_['define_uv'] = 'VEML6070 uv_sensor; \n';
+Blockly.Arduino.definitions_['define_uv'] = 'VEML6070 uv_sensor;';
 Blockly.Arduino.setups_['sensebox_uv_sensor'] = 'uv_sensor.begin();';
   var code ='uv_sensor.getUV()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
 Blockly.Arduino.sensebox_sensor_pressure = function() {  
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-Blockly.Arduino.definitions_['define_pressure'] = 'BMP280 bmp_sensor;\n';
+Blockly.Arduino.definitions_['define_pressure'] = 'BMP280 bmp_sensor;';
 Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'bmp_sensor.begin();';
   var code ='bmp_sensor.getPressure()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
@@ -35,7 +35,7 @@ Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'bmp_sensor.begin();';
 Blockly.Arduino.sensebox_sensor_temp_hum = function(){
   var dropdown_name = this.getFieldValue('NAME');
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-  Blockly.Arduino.definitions_['define_hdc'] = 'HDC100X hdc();\n';
+  Blockly.Arduino.definitions_['define_hdc'] = 'HDC100X hdc;';
   Blockly.Arduino.setups_['sensebox_sensor_temp_hum'] = 'hdc.begin();\n';
   var code = 'hdc.get'+dropdown_name+'()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
@@ -75,7 +75,7 @@ Blockly.Arduino.sensebox_time = function() {
   var dropdown_format = this.getFieldValue('FORMAT');
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
   Blockly.Arduino.definitions_['define_rtc'] = 'RV8523 rtc;';
-  Blockly.Arduino.setups_['sensebox_rtc'] = 'rtc.set(10, 24, 8, 20, 4, 2016); // 08:24:10 20.04.2016\n rtc.begin();';
+  Blockly.Arduino.setups_['sensebox_rtc'] = ' rtc.begin();\n rtc.setTime(__DATE__,__TIME__);'; //old rtc.set(10, 24, 8, 20, 4, 2016); // 08:24:10 20.04.2016\n
   var code = '';
   if(dropdown_format == "jjjj.mm.tt hh:mm:ss"){
       code += '"" + (String) rtc.getYear() + "." + (String) rtc.getMonth() + "." + (String) rtc.getDay() + "  " + (String) rtc.getHour() + ":" + (String) rtc.getMin()+ ":" + (String) rtc.getSec()';
@@ -145,7 +145,7 @@ Blockly.Arduino.sensebox_rgb_led = function() {
   Blockly.Arduino.definitions_['define_rgb_led'+dropdown_pin] = '#include <Adafruit_NeoPixel.h>\n Adafruit_NeoPixel rgb_led_'+ dropdown_pin +' = Adafruit_NeoPixel(1,'+ dropdown_pin +',NEO_GRB + NEO_KHZ800);\n';
   Blockly.Arduino.setups_['setup_rgb_led'+dropdown_pin] = 'rgb_led_'+ dropdown_pin+ '.begin();';
 
-    var code = 'rgb_led_'+ dropdown_pin +'.setPixelColor(0,rgb_led_'+ dropdown_pin +'.Color('+ red +',' + green +',' + blue +'));\n';
+    var code = 'rgb_led_'+ dropdown_pin +'.setPixelColor(0,rgb_led_'+ dropdown_pin +'.Color('+ green +',' + red +',' + blue +'));\n';
   code += 'rgb_led_'+ dropdown_pin +'.show();';
   return code;
 };
@@ -153,7 +153,7 @@ Blockly.Arduino.sensebox_rgb_led = function() {
 ----------------------------------Ausgabe--------------------------------------------------
 */
 Blockly.Arduino.sensebox_serial_print = function() {
-Blockly.Arduino.setups_['sensebox_serial_print'] = '//Setup Serial Print\n Serial.begin(9600);\n';
+Blockly.Arduino.setups_['sensebox_serial_print'] = '//Setup Serial Print\n  Serial.begin(9600);\n';
 var linebreak =  this.getFieldValue('LINEBREAK');
 if(linebreak =="TRUE"){
   linebreak = "ln";

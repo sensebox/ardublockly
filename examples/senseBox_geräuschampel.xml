@@ -1,0 +1,120 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_set" id="Ww+juJW)enMfV2No~3kv" x="6" y="44">
+    <field name="VAR">lautst</field>
+    <value name="VALUE">
+      <block type="variables_set_type" id="NNb%;0!3KsvV6O=ol[AT">
+        <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="sensebox_sensor_sound" id="jbajHLqq2ow{E83bna3P">
+            <field name="PIN">A0</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="sensebox_serial_print" id="+I~?bCD*fNB/*:rlFPPg">
+        <field name="LINEBREAK">TRUE</field>
+        <value name="TEXT">
+          <block type="variables_get" id="B`?i7xQ@(7EqDP/YnB1g">
+            <field name="VAR">lautst</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="ugo3PU+k3HAwKHFF=?Ub">
+            <mutation elseif="1" else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="u9rCug1VMm/]3G7J,p0x">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="ca^Xn0Fn_JHC6a]K8w)W">
+                    <field name="VAR">lautst</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="16+LR)zRCpSV*x)W6jgm">
+                    <field name="NUM">650</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="sensebox_rgb_led" id="HsDM,}%BYP1avonmPsLY">
+                <field name="PIN">8</field>
+                <value name="RED">
+                  <block type="math_number" id="%Nj!:blt`LZ5/z**:`.F">
+                    <field name="NUM">200</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="*~YvwzVsgh);26}xNW|0">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="}Lcz;]!4BSS{BNP]ywkK">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="f)=^HLG%}EQqC/eNLq[i">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="9p,_XyI*pG|eOgGb;2[K">
+                    <field name="VAR">lautst</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="TL.6OCI_;EN?YNz.[k!}">
+                    <field name="NUM">530</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="sensebox_rgb_led" id="g!,t5F8M=VNM#G5OeUE8">
+                <field name="PIN">8</field>
+                <value name="RED">
+                  <block type="math_number" id="^mtf=Us3o4wOt~Np+Uwi">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="!gD+*mCzHodW7,een}d]">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="ppGl.p+G|bO[{=2mqBpe">
+                    <field name="NUM">200</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="sensebox_rgb_led" id="J4PrCVtTv`R8(fZ4MiQ,">
+                <field name="PIN">8</field>
+                <value name="RED">
+                  <block type="math_number" id="jMhKhd?;aOCXVB;9xh4v">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="(T]i51:lBbQ6caOFuBf9">
+                    <field name="NUM">200</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="(3*Y.J;h/}_*[3l1z,((">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

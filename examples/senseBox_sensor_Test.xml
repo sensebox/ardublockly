@@ -1,0 +1,104 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="sensebox_serial_print" id="EA2{gr4[p1U{a?6f,XF(" x="8" y="40">
+    <field name="LINEBREAK">TRUE</field>
+    <value name="TEXT">
+      <block type="sensebox_time" id="bHT0-.xvX=A1(?Ox:*p[">
+        <field name="FORMAT">jjjj.mm.tt hh:mm:ss</field>
+      </block>
+    </value>
+    <next>
+      <block type="sensebox_serial_print" id="x%/Df(29y7EbBi:jw2,I">
+        <field name="LINEBREAK">FALSE</field>
+        <value name="TEXT">
+          <block type="text" id="*}F@Kur!iJWz{lDKNe6J">
+            <field name="TEXT">UV</field>
+          </block>
+        </value>
+        <next>
+          <block type="sensebox_serial_print" id="~vu^9hvDK?LW9iEM;m45">
+            <field name="LINEBREAK">TRUE</field>
+            <value name="TEXT">
+              <block type="sensebox_sensor_uv" id="twhq@G^[*By6|qo0GDg-"></block>
+            </value>
+            <next>
+              <block type="sensebox_serial_print" id="i*M%XaVfM}aQwSq/X`:?">
+                <field name="LINEBREAK">FALSE</field>
+                <value name="TEXT">
+                  <block type="text" id="kzD1hm}OdPV82+I)G4Zw">
+                    <field name="TEXT">Lux</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="sensebox_serial_print" id="21_0o8R.Hlpk/9b,^Mq?">
+                    <field name="LINEBREAK">TRUE</field>
+                    <value name="TEXT">
+                      <block type="sensebox_sensor_lux" id="vxp[~5EAG}+bN(2md.3P"></block>
+                    </value>
+                    <next>
+                      <block type="sensebox_serial_print" id="%[mfmm53xA;_Z7w6RpOE">
+                        <field name="LINEBREAK">FALSE</field>
+                        <value name="TEXT">
+                          <block type="text" id="6%68+L,v/)Imu`R`vKIJ">
+                            <field name="TEXT">Temperatur</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="sensebox_serial_print" id="3k6;h%E-[bDtJSH!S:tm">
+                            <field name="LINEBREAK">TRUE</field>
+                            <value name="TEXT">
+                              <block type="sensebox_sensor_temp_hum" id="wHIF;4R=WETZ+SJp`6+Q">
+                                <field name="NAME">Temp</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="sensebox_serial_print" id="Q:~!n8M!-[ZiSIR~9^,#">
+                                <field name="LINEBREAK">FALSE</field>
+                                <value name="TEXT">
+                                  <block type="text" id="6,3M(;aeuK%#Gv?lqDQT">
+                                    <field name="TEXT">Luftfeuchte</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_serial_print" id="KT={%16s39IZwv)mDG[?">
+                                    <field name="LINEBREAK">TRUE</field>
+                                    <value name="TEXT">
+                                      <block type="sensebox_sensor_temp_hum" id="lhz2iL,%ma`EI%SmSS#f">
+                                        <field name="NAME">Humi</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_serial_print" id="kNi%YfAoh_XI(1Oa8bl3">
+                                        <field name="LINEBREAK">FALSE</field>
+                                        <value name="TEXT">
+                                          <block type="text" id="//vW{VMN,m^nkterO[EY">
+                                            <field name="TEXT">Luftdruck</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="sensebox_serial_print" id="jI!kEW1vF/P70^2kXIy9">
+                                            <field name="LINEBREAK">TRUE</field>
+                                            <value name="TEXT">
+                                              <block type="sensebox_sensor_pressure" id="GXy^N#q{QxsS=Xb8=Wd,"></block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

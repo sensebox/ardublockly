@@ -54,7 +54,7 @@ Blockly.Blocks['sensebox_sensor_temp_hum'] = {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Messwert:")
-        .appendField(new Blockly.FieldDropdown([["Temperatur","Temp"], ["Luffeuchtigkeit","Hum"]]), "NAME");
+        .appendField(new Blockly.FieldDropdown([["Temperatur","Temp"], ["Luffeuchtigkeit","Humi"]]), "NAME");
     this.setOutput(true, "Number");
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setTooltip('Dieser Sensor misst je nach Wahl die Temperatur oder die Luftf euchtigkeit');
