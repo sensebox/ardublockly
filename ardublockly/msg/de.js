@@ -48,23 +48,23 @@ Ardublockly.LOCALISED_TEXT = {
   arduinoOpErrorIdContext_54: "What should we do with the Sketch?<br>" +
                               "The launch IDE option has not been set.<br>" +
                               "Please select an IDE option in the Settings.",
-  arduinoOpErrorIdContext_55: "Serial Port unavailable<br>" +
-                              "The Serial Port is not accessible.<br>" +
+  arduinoOpErrorIdContext_55: "Auf den seriellen Port kann nicht zugegriffen werden<br>" +
+                              "Auf den seriellen Port kann nicht zugegriffen werden.<br>" +
                               "Please check if the Arduino is correctly connected to the PC and select the Serial Port in the Settings.",
   arduinoOpErrorIdContext_56: "Unknown Arduino Board<br>" +
                               "The Arduino Board has not been set.<br>" +
                               "Please select the appropriate Arduino Board from the settings.",
   arduinoOpErrorIdContext_52: "Unexpected server error.",
   arduinoOpErrorIdContext_64: "Unable to parse sent JSON.",
-  arduinoOpErrorUnknown: "Unexpected error",
+  arduinoOpErrorUnknown: "Unerwarteter Fehler",
   /* Modals */
-  noServerTitle: "Ardublockly app not running",
+  noServerTitle: "SenseBox::Blockly Server läuft nicht",
   noServerTitleBody: "<p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally on your computer.</p>" +
                      "<p>If you are using an online version you will not be able to configure the settings nor load the blocks code into an Arduino.</p>" +
                      "<p>Installation instruction can be found in the <a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository</a>.</p>" +
                      "<p>If you have Ardublockly already installed, make sure the application is running correctly.</p>",
   noServerNoLangBody: "If the Ardublockly application is not running the language cannot be fully changed.",
-  addBlocksTitle: "Additional Blocks",
+  addBlocksTitle: "Zusätzliche Blöcke",
   /* Alerts */
   loadNewBlocksTitle: "Load new blocks?",
   loadNewBlocksBody: "Loading a new XML file will replace the current blocks from the workspace.<br>" +
@@ -89,7 +89,7 @@ Ardublockly.LOCALISED_TEXT = {
   return: "Rückgabe",
   /* Cards */
   arduinoSourceCode: "Arduino Quellcode",
-  blocksXml: "Blöcke XML",
+  blocksXml: "XML Blöcke",
   /* Toolbox Categories*/
   catLogic: "Logik",
   catLoops: "Schleifen",
@@ -102,4 +102,7 @@ Ardublockly.LOCALISED_TEXT = {
   catAudio: "Audio",
   catMotors: "Motoren",
   catComms: "Kommunikation",
+  senseBox_output: "senseBox Ausgabe",
+  senseBox_basics: "senseBox Grundlagen",
+  senseBox_Sensor: "senseBox Sensoren",
 };

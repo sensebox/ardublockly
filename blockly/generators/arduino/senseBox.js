@@ -75,7 +75,7 @@ Blockly.Arduino.sensebox_time = function() {
   var dropdown_format = this.getFieldValue('FORMAT');
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
   Blockly.Arduino.definitions_['define_rtc'] = 'RV8523 rtc;';
-  Blockly.Arduino.setups_['sensebox_rtc'] = ' rtc.begin();\n rtc.setTime(__DATE__,__TIME__);'; //old rtc.set(10, 24, 8, 20, 4, 2016); // 08:24:10 20.04.2016\n
+  Blockly.Arduino.setups_['sensebox_rtc'] = ' rtc.begin();\n  rtc.setTime(__DATE__,__TIME__);'; //old rtc.set(10, 24, 8, 20, 4, 2016); // 08:24:10 20.04.2016\n
   var code = '';
   if(dropdown_format == "jjjj.mm.tt hh:mm:ss"){
       code += '"" + (String) rtc.getYear() + "." + (String) rtc.getMonth() + "." + (String) rtc.getDay() + "  " + (String) rtc.getHour() + ":" + (String) rtc.getMin()+ ":" + (String) rtc.getSec()';
@@ -95,14 +95,14 @@ Blockly.Arduino.sensebox_shield_wifi = function(block) {
   var box_id = this.getFieldValue('box_id');
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
   Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
-  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin('+ net_id +','+ pw +');';
+  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin('+ net_id +',"'+ pw +'"");';
   var code = '';
 
   //extra blöcke sensor
   for (var n = 1; n <= block.osm_sensorCount_ ; n++) {
     var sensor_id = Blockly.Arduino.valueToCode(block, 'ID' + n, Blockly.Arduino.ORDER_NONE) || '0000';
     var sensor_value = Blockly.Arduino.statementToCode(block, 'TEXT' + n)|| '0000';
-    code += ' postFloatValue(' + sensor_value + ',' + sensor_id +','+box_id+');';
+    code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');';
   }
   return code;
 };

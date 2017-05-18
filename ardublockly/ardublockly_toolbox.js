@@ -12,7 +12,7 @@ var Ardublockly = Ardublockly || {};
 Ardublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
-'<category id="senseBox-Sensoren" name="senseBox Sensoren">' +
+'<category id="senseBox_Sensor" name="senseBox Sensoren">' +
 '      <block type="sensebox_sensor_temp_hum"></block>' +
 '      <block type="sensebox_sensor_lux"></block>' +
 '      <block type="sensebox_sensor_uv"></block>' +
@@ -24,7 +24,7 @@ Ardublockly.TOOLBOX_XML =
 '      <block type="sensebox_button"></block>' +
 '      <block type="sensebox_poti"></block>' +
 '    </category>' +
-'    <category id="senseBox-Grundlagen" name="senseBox Grundlagen">' +
+'    <category id="senseBox_basics" name="senseBox Grundlagen">' +
 '      <block type="sensebox_led"></block>' +
 '      <block type="sensebox_piezo_buzzer"></block>' +
 '      <block type="sensebox_rgb_led">' +
@@ -45,14 +45,13 @@ Ardublockly.TOOLBOX_XML =
 '        </value>' +
 '      </block>' +
 '    </category>' +
-'   <category id="senseBox-output" name="senseBox Ausgabe">' +
+'   <category id="senseBox_output" name="senseBox Ausgabe">' +
 '      <block type="sensebox_time"></block>' +
 '      <block type="sensebox_safe_to_sd"></block>' +
 '      <block type="sensebox_serial_print"></block>' +
 '      <block type="sensebox_shield_wifi"></block>' +
 '      <block type="sensebox_shield_ethernet"></block>'+
 '   </category>' +
-
 '  <sep></sep>' +
 '  <category id="catLogic" name="Logic">' +
 '    <block type="controls_if"></block>' +

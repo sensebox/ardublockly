@@ -71,13 +71,13 @@ Ardublockly.bindActionFunctions = function() {
     $('.button-collapse').sideNav('hide');
   });
   Ardublockly.bindClick_('menu_example_4', function() {
-    Ardublockly.loadServerXmlFile('../examples/servo_knob.xml');
+    Ardublockly.loadServerXmlFile('../examples/senseBox_gerauschampel.xml');
     $('.button-collapse').sideNav('hide');
   });
-  Ardublockly.bindClick_('menu_example_5', function() {
-    Ardublockly.loadServerXmlFile('../examples/stepper_knob.xml');
-    $('.button-collapse').sideNav('hide');
-  });
+    Ardublockly.bindClick_('menu_example_5', function() {
+      Ardublockly.loadServerXmlFile('../examples/senseBox_Sensor_Test.xml');
+      $('.button-collapse').sideNav('hide');
+    });
 
   // Floating buttons
   Ardublockly.bindClick_('button_ide_large', function() {
