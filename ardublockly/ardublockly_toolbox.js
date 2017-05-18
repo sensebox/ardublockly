@@ -20,11 +20,11 @@ Ardublockly.TOOLBOX_XML =
 '      <block type="sensebox_sensor_ultrasonic_ranger"></block>' +
 '      <block type="sensebox_sensor_ir_dist"></block>' +
 '      <block type="sensebox_sensor_sound"></block>' +
-'    </category>' +
-'    <category id="senseBox-Grundlagen" name="senseBox Grundlagen">' +
 '      <block type="sensebox_foto"></block>' +
 '      <block type="sensebox_button"></block>' +
 '      <block type="sensebox_poti"></block>' +
+'    </category>' +
+'    <category id="senseBox-Grundlagen" name="senseBox Grundlagen">' +
 '      <block type="sensebox_led"></block>' +
 '      <block type="sensebox_piezo_buzzer"></block>' +
 '      <block type="sensebox_rgb_led">' +
@@ -45,15 +45,12 @@ Ardublockly.TOOLBOX_XML =
 '        </value>' +
 '      </block>' +
 '    </category>' +
-'    <category id="senseBox-Shields" name="senseBox Shields">' +
-'      <block type="sensebox_shield_wifi"></block>' +
-'      <block type="sensebox_time"></block>' +
-'      <block type="sensebox_shield_ethernet"></block>' +
-'   </category>' +
 '   <category id="senseBox-output" name="senseBox Ausgabe">' +
-'      <block type="sensebox_print_osm"></block>' +
+'      <block type="sensebox_time"></block>' +
 '      <block type="sensebox_safe_to_sd"></block>' +
 '      <block type="sensebox_serial_print"></block>' +
+'      <block type="sensebox_shield_wifi"></block>' +
+'      <block type="sensebox_shield_ethernet"></block>'+
 '   </category>' +
 
 '  <sep></sep>' +

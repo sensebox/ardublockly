@@ -24,7 +24,7 @@ Blockly.Arduino.setups_['sensebox_uv_sensor'] = 'uv_sensor.begin();';
   var code ='uv_sensor.getUV()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
-Blockly.Arduino.sensebox_sensor_pressure = function() {  
+Blockly.Arduino.sensebox_sensor_pressure = function() {
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
 Blockly.Arduino.definitions_['define_pressure'] = 'BMP280 bmp_sensor;';
 Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'bmp_sensor.begin();';
@@ -51,8 +51,8 @@ Blockly.Arduino.sensebox_sensor_ultrasonic_ranger = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.sensebox_sensor_sound = function() {  
-  
+Blockly.Arduino.sensebox_sensor_sound = function() {
+
   var dropdown_pin = this.getFieldValue('PIN');
   var code = 'analogRead('+dropdown_pin+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -73,7 +73,7 @@ Blockly.Arduino.sensebox_sensor_ir_dist = function() {
 
 Blockly.Arduino.sensebox_time = function() {
   var dropdown_format = this.getFieldValue('FORMAT');
-  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
+  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
   Blockly.Arduino.definitions_['define_rtc'] = 'RV8523 rtc;';
   Blockly.Arduino.setups_['sensebox_rtc'] = ' rtc.begin();\n rtc.setTime(__DATE__,__TIME__);'; //old rtc.set(10, 24, 8, 20, 4, 2016); // 08:24:10 20.04.2016\n
   var code = '';
@@ -89,12 +89,25 @@ Blockly.Arduino.sensebox_time = function() {
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.sensebox_shield_wifi = function() {
+Blockly.Arduino.sensebox_shield_wifi = function(block) {
   var pw = this.getFieldValue('pw');
   var net_id = this.getFieldValue('net_id');
-  var code = ''+ pw+'+'+net_id;
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+  var box_id = this.getFieldValue('box_id');
+  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
+  Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
+  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin('+ net_id +','+ pw +');';
+  var code = '';
+
+  //extra blöcke sensor
+  for (var n = 1; n <= block.osm_sensorCount_ ; n++) {
+    var sensor_id = Blockly.Arduino.valueToCode(block, 'ID' + n, Blockly.Arduino.ORDER_NONE) || '0000';
+    var sensor_value = Blockly.Arduino.statementToCode(block, 'TEXT' + n)|| '0000';
+    code += ' postFloatValue(' + sensor_value + ',' + sensor_id +','+box_id+');';
+  }
+  return code;
 };
+
+
 
 /*
 ----------------------------------Basics--------------------------------------------------

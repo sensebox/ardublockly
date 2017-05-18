@@ -129,25 +129,7 @@ Blockly.Blocks['sensebox_shield_ethernet'] = {
   }
 };
 
-Blockly.Blocks['sensebox_shield_wifi'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("WLAN Shield");
-    this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Password")
-        .appendField(new Blockly.FieldTextInput("PW"), "pw");
-    this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Netzwerkid")
-        .appendField(new Blockly.FieldTextInput("NET_ID"), "net_id");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip('Dieser Block läd über ein WLAN Daten ins Internet');
-    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
-  }
-};
+
 
 
 /*
@@ -259,6 +241,22 @@ Blockly.Blocks['sensebox_serial_print'] = {
     this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/der_serielle_monitor.html');
   }
 };
+Blockly.Blocks['sensebox_safe_to_sd'] = {
+  init: function() {
+    this.appendValueInput("TEXT")
+        .setCheck(null)
+        .appendField("Auf SD Karte speichern");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Dateiname:")
+        .appendField(new Blockly.FieldTextInput("TXT"), "txt");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setTooltip('Dieser Block speichert Daten auf einer SD Karte.');
+    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/datenlogger.html');
+  }
+};
 
 Blockly.Blocks['sensebox_print_osm'] = {
   init: function() {
@@ -278,19 +276,154 @@ Blockly.Blocks['sensebox_print_osm'] = {
   }
 };
 
-Blockly.Blocks['sensebox_safe_to_sd'] = {
+
+Blockly.Blocks['sensebox_shield_wifi'] = {
+init: function() {
+  this.setTooltip('Dieser Block läd über ein WLAN Daten ins Internet');
+  this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
+  this.setColour(Blockly.Blocks.sensebox.HUE);
+  this.appendDummyInput()
+      .appendField("WLAN Shield");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField("Password")
+      .appendField(new Blockly.FieldTextInput("PW"), "pw");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField("NetzwerkID")
+      .appendField(new Blockly.FieldTextInput("NET_ID"), "net_id");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField("BoxID")
+      .appendField(new Blockly.FieldTextInput("BoxID"), "box_id");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  //starte Mutator
+    this.setMutator(new Blockly.Mutator(['osm_sensor'])); 
+    this.osm_sensorCount_ = 0;
+  },
+
+  /**
+   * Create XML to represent the number of sensebox_safe_to_sd inputs.
+   * @return {Element} XML storage element.
+   * @this Blockly.Block
+   */
+    mutationToDom: function() {
+    if (!this.osm_sensorCount_) {
+      return null;
+    }
+    var container = document.createElement('mutation');
+    container.setAttribute('osm_sensor_', this.osm_sensorCount_);
+    return container;
+  },
+  /**
+   * Parse XML to restore the else-if and else inputs.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+  domToMutation: function(xmlElement) {
+    this.osm_sensorCount_ = parseInt(xmlElement.getAttribute('osm_sensor_'), 10) || 0; //evt anderes even
+    this.updateShape_();
+  },
+  /**
+   * Populate the mutator's dialog with this block's components.
+   * @param {!Blockly.Workspace} workspace Mutator's workspace.
+   * @return {!Blockly.Block} Root block in mutator.
+   * @this Blockly.Block
+   */
+  decompose: function(workspace) {
+    var containerBlock = workspace.newBlock('sensebox_shield_wifi');
+    containerBlock.initSvg();
+    var connection = containerBlock.nextConnection;
+    for (var i = 1; i <= this.osm_sensorCount_; i++) {
+      var osm_sensorBlock = workspace.newBlock('osm_sensor');
+      osm_sensorBlock.initSvg();
+      connection.connect(osm_sensorBlock.previousConnection);
+      connection = osm_sensorBlock.nextConnection;
+    }
+      return containerBlock;
+  },
+  /**
+   * Reconfigure this block based on the mutator dialog's components.
+   * @param {!Blockly.Block} containerBlock Root block in mutator.
+   * @this Blockly.Block
+   */
+  compose: function(containerBlock) {
+    var clauseBlock = containerBlock.nextConnection.targetBlock();
+    // Count number of inputs.
+    this.osm_sensorCount_ = 0;
+    var valueConnections = [null];
+    var statementConnections = [null];
+    while (clauseBlock) {
+      switch (clauseBlock.type) {
+        case 'osm_sensor':
+          this.osm_sensorCount_++;
+          valueConnections.push(clauseBlock.valueConnection_);
+          statementConnections.push(clauseBlock.statementConnection_);
+        break;
+        default:
+          throw 'Unknown block type.';
+      }
+      clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
+    }
+    this.updateShape_();
+    // Reconnect any child blocks.
+    for (var i = 1; i <= this.osm_sensorCount_; i++) {
+      Blockly.Mutator.reconnect(statementConnections[i], this, 'Text' + i);
+      Blockly.Mutator.reconnect(valueConnections[i], this, 'ID' + i);
+    }
+  },
+  /**
+   * Store pointers to any connected child blocks.
+   * @param {!Blockly.Block} containerBlock Root block in mutator.
+   * @this Blockly.Block
+   */
+  saveConnections: function(containerBlock) {
+    var clauseBlock = containerBlock.nextConnection.targetBlock();
+    var i = 1;
+    while (clauseBlock) {
+      switch (clauseBlock.type) {
+        case 'osm_sensor':
+          var inputStatement = this.getInput('TEXT'+i); ///to do
+          var inputValue = this.getInput('ID'+i);
+          clauseBlock.valueConnection_ = inputValue && inputValue.connection.targetConnection;
+          clauseBlock.statementConnection_ = inputStatement && inputStatement.connection.targetConnection;
+          i++;
+          break;
+      default:
+          throw 'Unknown block type.';
+      }
+      clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
+    }
+  },
+  /**
+   * Modify this block to have the correct number of inputs.
+   * @private
+   * @this Blockly.Block
+   */
+  updateShape_: function() {
+    // Delete everything.
+    var i = 1;
+    while (this.getInput('TEXT'+i)) {
+      this.removeInput('TEXT'+i);
+      i++;
+    }
+    // Rebuild block.
+    for (var i = 1; i <= this.osm_sensorCount_; i++) {
+      this.appendValueInput('TEXT'+i)
+         .setCheck(null)
+         .appendField('ID_'+i)
+         .appendField(new Blockly.FieldTextInput('ID'+i), 'ID'+i);
+    }
+  }
+};
+Blockly.Blocks['osm_sensor'] = {
   init: function() {
-    this.appendValueInput("TEXT")
-        .setCheck(null)
-        .appendField("Auf SD Karte speichern");
-    this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Dateiname:")
-        .appendField(new Blockly.FieldTextInput("TXT"), "txt");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip('Dieser Block speichert Daten auf einer SD Karte.');
-    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/datenlogger.html');
+    this.appendDummyInput()
+        .appendField("Sensor");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.contextMenu = false;
   }
 };
