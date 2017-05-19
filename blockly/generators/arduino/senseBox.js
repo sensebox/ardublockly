@@ -67,10 +67,6 @@ Blockly.Arduino.sensebox_sensor_ir_dist = function() {
 /*
 ----------------------------------Shields--------------------------------------------------
 */
-
-
-//Neue funktion in Bib schreibe, die Zeit vom rechner nimmt (siehe Projekt LED UHR)
-
 Blockly.Arduino.sensebox_time = function() {
   var dropdown_format = this.getFieldValue('FORMAT');
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
@@ -97,10 +93,9 @@ Blockly.Arduino.sensebox_shield_wifi = function(block) {
   Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
   Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin('+ net_id +',"'+ pw +'"");';
   var code = '';
-
   //extra blöcke sensor
   for (var n = 1; n <= block.osm_sensorCount_ ; n++) {
-    var sensor_id = Blockly.Arduino.valueToCode(block, 'ID' + n, Blockly.Arduino.ORDER_NONE) || '0000';
+    var sensor_id = Blockly.Arduino.valueToCode(block, 'ID' + n, Blockly.Arduino.ORDER_NONE) || '0000'; //block statt this
     var sensor_value = Blockly.Arduino.statementToCode(block, 'TEXT' + n)|| '0000';
     code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');';
   }

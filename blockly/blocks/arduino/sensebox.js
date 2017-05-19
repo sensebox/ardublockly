@@ -50,7 +50,7 @@ Blockly.Blocks['sensebox_sensor_ir_dist'] = {
 Blockly.Blocks['sensebox_sensor_temp_hum'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Temperatur und Luftfeuchte Sensor");
+        .appendField(Blockly.Msg.senseBox_sen_temp_hum);
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Messwert:")
@@ -257,7 +257,7 @@ Blockly.Blocks['sensebox_safe_to_sd'] = {
     this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/datenlogger.html');
   }
 };
-
+/*
 Blockly.Blocks['sensebox_print_osm'] = {
   init: function() {
     this.appendDummyInput()
@@ -275,7 +275,7 @@ Blockly.Blocks['sensebox_print_osm'] = {
     this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
   }
 };
-
+*/
 
 Blockly.Blocks['sensebox_shield_wifi'] = {
 init: function() {
@@ -299,7 +299,7 @@ init: function() {
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
   //starte Mutator
-    this.setMutator(new Blockly.Mutator(['osm_sensor'])); 
+    this.setMutator(new Blockly.Mutator(['osm_sensor']));
     this.osm_sensorCount_ = 0;
   },
 
