@@ -5,7 +5,7 @@
  * Copyright 2012 Google Inc.
  * https://developers.google.com/blockly/
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -1120,3 +1120,32 @@ Blockly.Msg.PROCEDURES_IFRETURN_TOOLTIP = 'If a value is true, then return a sec
 Blockly.Msg.PROCEDURES_IFRETURN_HELPURL = 'http://c2.com/cgi/wiki?GuardClause';
 /// warning - This appears if the user tries to use this block outside of a function definition.
 Blockly.Msg.PROCEDURES_IFRETURN_WARNING = 'Warning: This block may be used only within a function definition.';
+/// sneseBox Blocks
+Blockly.Msg.senseBox_sen_temp_hum = 'Temperaturn und Luftfeuchte Sensor';
+Blockly.Msg.senseBox_sen_value = 'Messwert:';
+Blockly.Msg.senseBox_sen_temp = 'Temperatur';
+Blockly.Msg.senseBox_sen_hum = 'Luftfeuchtigkeit';
+Blockly.Msg.senseBox_sen_lux = 'Helligkeitssensor';
+Blockly.Msg.senseBox_sen_uv = 'Uv-Licht Sensor';
+Blockly.Msg.senseBox_sen_pressure = 'Luftdrucksensor';
+Blockly.Msg.senseBox_sen_ultrasonic = 'Ultraschall Abstandssensor';
+Blockly.Msg.senseBox_sen_ir = 'Infrarot Abstandssensor';
+Blockly.Msg.senseBox_sen_sound = 'Geräuschsensor';
+Blockly.Msg.senseBox_sen_foto = 'Fotowiderstand';
+Blockly.Msg.senseBox_sen_buzzer = 'Drucktaster';
+Blockly.Msg.senseBox_sen_poti = 'Potenziometer';
+Blockly.Msg.senseBox_basic_piezo = 'Piezo Piepser';
+Blockly.Msg.senseBox_basic_red = 'Rot';
+Blockly.Msg.senseBox_basic_green = 'Grün';
+Blockly.Msg.senseBox_basic_blue = 'Blau';
+Blockly.Msg.senseBox_basic_state = 'Status';
+Blockly.Msg.senseBox_output_timestamp = 'Zeitstempel';
+Blockly.Msg.senseBox_output_format = 'Format:';
+Blockly.Msg.senseBox_output_safetosd = 'Auf SD Karte speichern';
+Blockly.Msg.senseBox_output_filename = 'Dateiname';
+Blockly.Msg.senseBox_output_serialprint = 'Auf Kommandozeile ausgeben';
+Blockly.Msg.senseBox_output_linebreak = 'Zeilenumbruch';
+Blockly.Msg.senseBox_output_password = 'Passwort';
+Blockly.Msg.senseBox_output_networkid = 'NetzwerkID';
+Blockly.Msg.senseBox_on = 'Ein';
+Blockly.Msg.senseBox_off = 'Aus';

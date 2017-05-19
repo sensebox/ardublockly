@@ -27,6 +27,7 @@ Blockly.Blocks['arduino_functions'] = {
     this.appendStatementInput('SETUP_FUNC');
     this.appendDummyInput()
         .appendField(Blockly.Msg.ARD_FUN_RUN_LOOP);
+
     this.appendStatementInput('LOOP_FUNC');
     this.setInputsInline(false);
     this.setColour(Blockly.Blocks.procedures.HUE);

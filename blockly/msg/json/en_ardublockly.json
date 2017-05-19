@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "carlosperate",
-		"lastupdated": "2017-05-11 12:57:27.906000",
+		"lastupdated": "2017-05-19 14:45:36.754000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -120,5 +120,33 @@
 	"NEW_INSTANCE": "New instance...",
 	"RENAME_INSTANCE": "Rename instance...",
 	"NEW_INSTANCE_TITLE": "New instance name:",
-	"RENAME_INSTANCE_TITLE": "Rename all '%1' instances to:"
+	"RENAME_INSTANCE_TITLE": "Rename all '%1' instances to:",
+	"senseBox_sen_temp_hum": "Temperaturn und Luftfeuchte Sensor",
+	"senseBox_sen_value": "Messwert:",
+	"senseBox_sen_temp": "Temperatur",
+	"senseBox_sen_hum": "Luftfeuchtigkeit",
+	"senseBox_sen_lux": "Helligkeitssensor",
+	"senseBox_sen_uv": "Uv-Licht Sensor",
+	"senseBox_sen_pressure": "Luftdrucksensor",
+	"senseBox_sen_ultrasonic": "Ultraschall Abstandssensor",
+	"senseBox_sen_ir": "Infrarot Abstandssensor",
+	"senseBox_sen_sound": "Geräuschsensor",
+	"senseBox_sen_foto": "Fotowiderstand",
+	"senseBox_sen_buzzer": "Drucktaster",
+	"senseBox_sen_poti": "Potenziometer",
+	"senseBox_basic_piezo": "Piezo Piepser",
+	"senseBox_basic_red": "Rot",
+	"senseBox_basic_green": "Grün",
+	"senseBox_basic_blue": "Blau",
+	"senseBox_basic_state": "Status",
+	"senseBox_output_timestamp": "Zeitstempel",
+	"senseBox_output_format": "Format:",
+	"senseBox_output_safetosd": "Auf SD Karte speichern",
+	"senseBox_output_filename": "Dateiname",
+	"senseBox_output_serialprint": "Auf Kommandozeile ausgeben",
+	"senseBox_output_linebreak": "Zeilenumbruch",
+	"senseBox_output_password": "Passwort",
+	"senseBox_output_networkid": "NetzwerkID",
+	"senseBox_on": "Ein",
+	"senseBox_off": "Aus"
 }
