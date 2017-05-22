@@ -117,16 +117,41 @@ Blockly.Blocks['sensebox_time'] = {
   }
 };
 
+
 Blockly.Blocks['sensebox_shield_ethernet'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Ethernet Shield");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip('Dieser Block läd über ein Netzwerkkable Daten ins Internet');
-    this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
-  }
+init: function() {
+  this.setTooltip('Dieser Block läd über das Netzwerk Daten ins Internet');
+  this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
+  this.setColour(Blockly.Blocks.sensebox.HUE);
+  this.appendDummyInput()
+      .appendField("Ethernetshield");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField("BoxID")
+      .appendField(new Blockly.FieldTextInput("BoxID"), "box_id");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.appendValueInput('TEXT1')
+     .setCheck(null)
+     .appendField('ID_1')
+     .appendField(new Blockly.FieldTextInput('ID1'), 'ID1');
+ this.appendValueInput('TEXT2')
+      .setCheck(null)
+      .appendField('ID_2')
+      .appendField(new Blockly.FieldTextInput('ID2'), 'ID2');
+this.appendValueInput('TEXT3')
+      .setCheck(null)
+      .appendField('ID_3')
+      .appendField(new Blockly.FieldTextInput('ID3'), 'ID3');
+this.appendValueInput('TEXT4')
+      .setCheck(null)
+      .appendField('ID_4')
+      .appendField(new Blockly.FieldTextInput('ID4'), 'ID4');
+this.appendValueInput('TEXT5')
+       .setCheck(null)
+       .appendField('ID_5')
+       .appendField(new Blockly.FieldTextInput('ID5'), 'ID5');
+      }
 };
 
 
@@ -168,11 +193,11 @@ Blockly.Blocks['sensebox_rgb_led'] = {
         .appendField("PIN:")
         .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.digitalPins), "PIN")
         this.appendValueInput("RED", 'Number')
-            .appendField(Blockly.Msg.senseBox_basic_red);
+            .appendField(Blockly.Msg.COLOUR_RGB_RED);//Blockly.Msg.senseBox_basic_red
         this.appendValueInput("GREEN", 'Number')
-              .appendField(Blockly.Msg.senseBox_basic_green);
+              .appendField(Blockly.Msg.COLOUR_RGB_GREEN);//Blockly.Msg.senseBox_basic_green
         this.appendValueInput("BLUE", 'Number')
-              .appendField(Blockly.Msg.senseBox_basic_blue);
+              .appendField(Blockly.Msg.COLOUR_RGB_BLUE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Jede Farbe kann einen Wert zwischen 0 und 255 annehmen.');
@@ -257,7 +282,52 @@ Blockly.Blocks['sensebox_safe_to_sd'] = {
     this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/datenlogger.html');
   }
 };
-//----funktioniret noch nicht--------------------
+
+//ersatzstein
+Blockly.Blocks['sensebox_shield_wifi'] = {
+init: function() {
+  this.setTooltip('Dieser Block läd über ein WLAN Daten ins Internet');
+  this.setHelpUrl('https://edu.books.sensebox.de/de/grundlagen/osem_upload.html');
+  this.setColour(Blockly.Blocks.sensebox.HUE);
+  this.appendDummyInput()
+      .appendField("WLAN Shield");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField(Blockly.Msg.senseBox_output_password)
+      .appendField(new Blockly.FieldTextInput("PW"), "pw");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField(Blockly.Msg.senseBox_output_networkid)
+      .appendField(new Blockly.FieldTextInput("NET_ID"), "net_id");
+  this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField("BoxID")
+      .appendField(new Blockly.FieldTextInput("BoxID"), "box_id");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.appendValueInput('TEXT1')
+     .setCheck(null)
+     .appendField('ID_1')
+     .appendField(new Blockly.FieldTextInput('ID1'), 'ID1');
+ this.appendValueInput('TEXT2')
+      .setCheck(null)
+      .appendField('ID_2')
+      .appendField(new Blockly.FieldTextInput('ID2'), 'ID2');
+this.appendValueInput('TEXT3')
+      .setCheck(null)
+      .appendField('ID_3')
+      .appendField(new Blockly.FieldTextInput('ID3'), 'ID3');
+this.appendValueInput('TEXT4')
+      .setCheck(null)
+      .appendField('ID_4')
+      .appendField(new Blockly.FieldTextInput('ID4'), 'ID4');
+this.appendValueInput('TEXT5')
+       .setCheck(null)
+       .appendField('ID_5')
+       .appendField(new Blockly.FieldTextInput('ID5'), 'ID5');
+      }
+};
+/*
 Blockly.Blocks['sensebox_shield_wifi'] = {
 init: function() {
   this.setTooltip('Dieser Block läd über ein WLAN Daten ins Internet');
@@ -284,11 +354,11 @@ init: function() {
     this.osm_sensorCount_ = 0;
   },
 
-  /**
-   * Create XML to represent the number of sensebox_safe_to_sd inputs.
-   * @return {Element} XML storage element.
-   * @this Blockly.Block
-   */
+//  /**
+  // * Create XML to represent the number of sensebox_safe_to_sd inputs.
+  // * @return {Element} XML storage element.
+  // * @this Blockly.Block
+  //
     mutationToDom: function() {
     if (!this.osm_sensorCount_) {
       return null;
@@ -297,21 +367,21 @@ init: function() {
     container.setAttribute('osm_sensor_', this.osm_sensorCount_);
     return container;
   },
-  /**
-   * Parse XML to restore the else-if and else inputs.
-   * @param {!Element} xmlElement XML storage element.
-   * @this Blockly.Block
-   */
+
+   //* Parse XML to restore the else-if and else inputs.
+  // * @param {!Element} xmlElement XML storage element.
+  // * @this Blockly.Block
+
   domToMutation: function(xmlElement) {
     this.osm_sensorCount_ = parseInt(xmlElement.getAttribute('osm_sensor_'), 10) || 0; //evt anderes even
     this.updateShape_();
   },
-  /**
-   * Populate the mutator's dialog with this block's components.
-   * @param {!Blockly.Workspace} workspace Mutator's workspace.
-   * @return {!Blockly.Block} Root block in mutator.
-   * @this Blockly.Block
-   */
+
+   //* Populate the mutator's dialog with this block's components.
+   //* @param {!Blockly.Workspace} workspace Mutator's workspace.
+   //* @return {!Blockly.Block} Root block in mutator.
+  // * @this Blockly.Block
+
   decompose: function(workspace) {
     var containerBlock = workspace.newBlock('sensebox_shield_wifi');
     containerBlock.initSvg();
@@ -324,11 +394,11 @@ init: function() {
     }
       return containerBlock;
   },
-  /**
-   * Reconfigure this block based on the mutator dialog's components.
-   * @param {!Blockly.Block} containerBlock Root block in mutator.
-   * @this Blockly.Block
-   */
+
+   //* Reconfigure this block based on the mutator dialog's components.
+   //* @param {!Blockly.Block} containerBlock Root block in mutator.
+  // * @this Blockly.Block
+
   compose: function(containerBlock) {
     var clauseBlock = containerBlock.nextConnection.targetBlock();
     // Count number of inputs.
@@ -350,15 +420,15 @@ init: function() {
     this.updateShape_();
     // Reconnect any child blocks.
     for (var i = 1; i <= this.osm_sensorCount_; i++) {
-      Blockly.Mutator.reconnect(statementConnections[i], this, 'Text' + i);
+      Blockly.Mutator.reconnect(statementConnections[i], this, 'TEXT' + i);
       Blockly.Mutator.reconnect(valueConnections[i], this, 'ID' + i);
     }
   },
-  /**
-   * Store pointers to any connected child blocks.
-   * @param {!Blockly.Block} containerBlock Root block in mutator.
-   * @this Blockly.Block
-   */
+  ///**
+   //* Store pointers to any connected child blocks.
+   //* @param {!Blockly.Block} containerBlock Root block in mutator.
+  // * @this Blockly.Block
+
   saveConnections: function(containerBlock) {
     var clauseBlock = containerBlock.nextConnection.targetBlock();
     var i = 1;
@@ -377,11 +447,11 @@ init: function() {
       clauseBlock = clauseBlock.nextConnection && clauseBlock.nextConnection.targetBlock();
     }
   },
-  /**
-   * Modify this block to have the correct number of inputs.
-   * @private
-   * @this Blockly.Block
-   */
+  ///**
+   //* Modify this block to have the correct number of inputs.
+   //* @private
+  // * @this Blockly.Block
+
   updateShape_: function() {
     // Delete everything.
     var i = 1;
@@ -408,3 +478,4 @@ Blockly.Blocks['osm_sensor'] = {
     this.contextMenu = false;
   }
 };
+*/

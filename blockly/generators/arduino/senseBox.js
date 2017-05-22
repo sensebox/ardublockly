@@ -84,7 +84,7 @@ Blockly.Arduino.sensebox_time = function() {
   }
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
-
+/* funktioniert noch nicht
 Blockly.Arduino.sensebox_shield_wifi = function(block) {
   var pw = this.getFieldValue('pw');
   var net_id = this.getFieldValue('net_id');
@@ -95,9 +95,49 @@ Blockly.Arduino.sensebox_shield_wifi = function(block) {
   var code = '';
   //extra blöcke sensor
   for (var n = 1; n <= block.osm_sensorCount_ ; n++) {
-    var sensor_id = Blockly.Arduino.valueToCode(block, 'ID' + n, Blockly.Arduino.ORDER_NONE) || '0000'; //block statt this
+    var sensor_id = Blockly.Arduino.valueToCode(block, 'ID' + n, Blockly.Arduino.ORDER_NONE) || '0000';
     var sensor_value = Blockly.Arduino.statementToCode(block, 'TEXT' + n)|| '0000';
-    code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');';
+    code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');\n';
+  }
+  return code;
+};
+*/
+
+Blockly.Arduino.sensebox_shield_wifi = function(block) {
+  var pw = this.getFieldValue('pw');
+  var net_id = this.getFieldValue('net_id');
+  var box_id = this.getFieldValue('box_id');
+  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
+  Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
+  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin('+ net_id +',"'+ pw +'"");';
+  var code = '';
+  //extra blöcke sensor
+  for (var n = 1; n <= 5 ; n++) {
+      if(Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC)){
+      var sensor_id = this.getFieldValue('ID'+n) || '90909';
+      var sensor_value = Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+      code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');\n';
+    }else{
+      code += '//kein Sensor an Port '+ n +'\n';
+    }
+  }
+  return code;
+};
+Blockly.Arduino.sensebox_shield_ethernet = function(block) {
+  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
+  Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
+  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin();';
+  var box_id = this.getFieldValue('box_id');
+  var code = '';
+  //extra blöcke sensor
+  for (var n = 1; n <= 5 ; n++) {
+      if(Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC)){
+      var sensor_id = this.getFieldValue('ID'+n) || '90909';
+      var sensor_value = Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+      code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');\n';
+    }else{
+      code += '//kein Sensor an Port '+ n +'\n';
+    }
   }
   return code;
 };
@@ -145,7 +185,6 @@ Blockly.Arduino.sensebox_foto = function() {
 };
 
 Blockly.Arduino.sensebox_rgb_led = function() {
-
   var dropdown_pin = this.getFieldValue('PIN');
   var red = Blockly.Arduino.valueToCode(this, 'RED', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var green = Blockly.Arduino.valueToCode(this, 'GREEN', Blockly.Arduino.ORDER_ATOMIC) || '0'
