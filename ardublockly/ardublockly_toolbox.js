@@ -227,7 +227,6 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="io_notone"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-/**
 '  <category id="catMotors" name="Motors">' +
 '    <block type="servo_write">' +
 '      <value name="SERVO_ANGLE">' +
@@ -273,5 +272,4 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="spi_transfer"></block>' +
 '    <block type="spi_transfer_return"></block>' +
 '  </category>' +
-**/
 '</xml>';

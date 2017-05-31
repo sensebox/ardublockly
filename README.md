@@ -5,6 +5,8 @@ The `ArdublocklyServer` Python package initialises a local server to be able to 
 
 This is all packaged in a self contained executable desktop application for Windows, Mac OS X, and Linux.
 
+
+
 ![Ardublockly desktop program screenshot][desktop_screeshot]
 
 
@@ -15,7 +17,7 @@ This is all packaged in a self contained executable desktop application for Wind
 * Compatible with a wide range of official Arduino Boards
 * Works on Windows / Linux / Mac OS X
 
-Ardublockly is still under development and a few features are not yet implemented. A to-do list can be found in the [TODO.md][3] file.
+Ardublockly is still under development and a few features are not yet implemented.
 
 Currently tested under Windows with Python 2.7 and 3.4 and in Linux and MacOS X with Python 2.7.
 
@@ -82,6 +84,12 @@ To download the documentation you can git clone the wiki data:
 ```
 git clone https://github.com/carlosperate/ardublockly.wiki.git
 ```
+
+##Developing Ardublockly
+
+###Add Blockls
+
+###Change/Add Language
 
 
 ## Credit
