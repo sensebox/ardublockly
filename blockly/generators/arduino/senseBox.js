@@ -1,4 +1,9 @@
-
+/*
+@metadata
+		author": berndvanrennings
+		lastupdated": 2017-06-1
+		for more information: www.sensebox.de
+*/
 
 'use strict';
 
@@ -45,7 +50,7 @@ Blockly.Arduino.sensebox_sensor_ultrasonic_ranger = function() {
   var dropdown_pin_RX = this.getFieldValue('PIN_RX');
   var dropdown_pin_TX = this.getFieldValue('PIN_TX')
   Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
-  Blockly.Arduino.definitions_['var_ultrasonic'+dropdown_pin_RX] = 'Ultrasonic ultrasonic_'+dropdown_pin_RX+'('+dropdown_pin_RX+',' + dropdown_pin_TX + '); //RX,TX Pins';
+  Blockly.Arduino.definitions_['var_ultrasonic'+dropdown_pin_RX] = 'Ultrasonic ultrasonic_'+dropdown_pin_RX+'('+dropdown_pin_RX+',' + dropdown_pin_TX + '); //Trigger,Echo Pins';
   var code;
   code = 'ultrasonic_'+dropdown_pin_RX+'.getDistance()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -107,16 +112,16 @@ Blockly.Arduino.sensebox_shield_wifi = function(block) {
   var pw = this.getFieldValue('pw');
   var net_id = this.getFieldValue('net_id');
   var box_id = this.getFieldValue('box_id');
-  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
-  Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
-  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin('+ net_id +',"'+ pw +'"");';
+  Blockly.Arduino.definitions_['define_senseBox'] = '#include "SenseBox.h"';
+  Blockly.Arduino.definitions_['define_network'] = 'OpenSenseMap shield("'+box_id+'");';
+  Blockly.Arduino.setups_['sensebox_network'] = 'shield.beginWiFi("'+ net_id +'","'+ pw +'");';
   var code = '';
   //extra blöcke sensor
   for (var n = 1; n <= 5 ; n++) {
       if(Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC)){
       var sensor_id = this.getFieldValue('ID'+n) || '90909';
-      var sensor_value = Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
-      code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');\n';
+      var sensor_value = Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
+      code += ' shield.uploadValue(' + sensor_value + ',"' + sensor_id +'");\n';
     }else{
       code += '//kein Sensor an Port '+ n +'\n';
     }
@@ -124,17 +129,17 @@ Blockly.Arduino.sensebox_shield_wifi = function(block) {
   return code;
 };
 Blockly.Arduino.sensebox_shield_ethernet = function(block) {
-  Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>';
-  Blockly.Arduino.definitions_['define_network'] = 'Ehernet shield;';
-  Blockly.Arduino.setups_['sensebox_network'] = 'shield.begin();';
+  Blockly.Arduino.definitions_['define_senseBox'] = '#include "SenseBox.h"';
+  Blockly.Arduino.definitions_['define_network'] = 'OpenSenseMap shield("'+box_id+'");';
+  Blockly.Arduino.setups_['sensebox_network'] = 'shield.beginEthernet();';
   var box_id = this.getFieldValue('box_id');
   var code = '';
   //extra blöcke sensor
   for (var n = 1; n <= 5 ; n++) {
       if(Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC)){
       var sensor_id = this.getFieldValue('ID'+n) || '90909';
-      var sensor_value = Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
-      code += ' postFloatValue(' + sensor_value + ',"' + sensor_id +'","'+box_id+');\n';
+      var sensor_value = Blockly.Arduino.valueToCode(this, 'TEXT'+n, Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
+      code += ' shield.uploadValue(' + sensor_value + ',"' + sensor_id +'");\n';
     }else{
       code += '//kein Sensor an Port '+ n +'\n';
     }
@@ -207,25 +212,26 @@ if(linebreak =="TRUE"){
 }else{
   linebreak = "";
 }
-var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
 var code ='Serial.print'+ linebreak +'(' + text + ');\n';
 return code;
 };
 
 Blockly.Arduino.sensebox_print_osm = function() {
 var id = this.getFieldValue('id');
-var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
+var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
 var code = 'postFloatValue((float)'+text+', 4, '+id+');';
 return code;
 };
 
 Blockly.Arduino.sensebox_safe_to_sd = function() {
 var filename =  this.getFieldValue('txt');
-Blockly.Arduino.definitions_['define_sd'] = '#include <SPI.h> // wichtige Libraries für das Speichern von Daten auf SD-Karte\n #include <SD.h>';
+Blockly.Arduino.definitions_['define_sd'] = '#include <SPI.h> // wichtige Libraries für das Speichern von Daten auf SD-Karte\n #include <SD.h>\n';
+Blockly.Arduino.definitions_['define_sd'+filename] = 'File dataFile'+filename+';'
 Blockly.Arduino.setups_['sensebox_sd'] = 'SD.begin(4);';
-var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'Keine Eingabe';
-var code ='File dataFile = SD.open("'+filename+'.txt", FILE_WRITE);\n'
-code +='dataFile.println('+ text +');\n'
-code +='dataFile.close();\n'
+var text = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
+var code ='dataFile'+filename+' = SD.open("'+filename+'.txt", FILE_WRITE);\n'
+code +='dataFile'+filename+'.println('+ text +');\n'
+code +='dataFile'+filename+'.close();\n'
 return code;
 };

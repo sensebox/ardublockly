@@ -1,3 +1,9 @@
+/*
+@metadata
+    author": berndvanrennings
+    lastupdated": 2017-06-1 
+    for more information: www.sensebox.de
+*/  
 
 'use strict';
 
@@ -8,7 +14,7 @@ goog.require('Blockly.Blocks');
 
 /**
  * Common HSV hue for all blocks in this category.
- "SenseBox green"
+ * "SenseBox green"
  */
  Blockly.Blocks.sensebox.HUE = 120;
 

@@ -1,0 +1,50 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="sensebox_shield_wifi" id="8;kcPz=N0jv+JTGE+w=." x="43" y="65">
+    <field name="pw">028026100</field>
+    <field name="net_id">Bonny2</field>
+    <field name="box_id">592458a651d34600119b4b98</field>
+    <field name="ID1">592458a651d34600119b4b99</field>
+    <field name="ID2">592458a651d34600119b4b9c</field>
+    <field name="ID3">592458a651d34600119b4b9d</field>
+    <field name="ID4">592458a651d34600119b4b9b</field>
+    <field name="ID5">592458a651d34600119b4b9a</field>
+    <value name="TEXT1">
+      <block type="sensebox_sensor_temp_hum" id="oFQ*NiZ%%]+|3nG-A6+C">
+        <field name="NAME">Temp</field>
+      </block>
+    </value>
+    <value name="TEXT2">
+      <block type="sensebox_sensor_lux" id="jSK=8y;`1f#pr;z~)tb~"></block>
+    </value>
+    <value name="TEXT3">
+      <block type="sensebox_sensor_uv" id="#P#rEZUoOWET:M42di0f"></block>
+    </value>
+    <value name="TEXT4">
+      <block type="sensebox_sensor_pressure" id="7)x^(;B6x5jnYRBJn{0R"></block>
+    </value>
+    <value name="TEXT5">
+      <block type="sensebox_sensor_temp_hum" id="`2^.K}lp*p,|W`6F[@SX">
+        <field name="NAME">Humi</field>
+      </block>
+    </value>
+    <next>
+      <block type="sensebox_serial_print" id="J#xA7ymVKW=U@JUh)^eZ">
+        <field name="LINEBREAK">TRUE</field>
+        <value name="TEXT">
+          <block type="sensebox_sensor_temp_hum" id="w`~j`;!Oe:@ok53l62O7">
+            <field name="NAME">Temp</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="QXJ}cCQ/##6{kC/pXY}J">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="(9p5G*e0RU)iX^9lGh*:">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
