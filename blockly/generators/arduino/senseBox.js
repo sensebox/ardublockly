@@ -32,7 +32,7 @@ Blockly.Arduino.setups_['sensebox_uv_sensor'] = 'uv_sensor.begin();';
 Blockly.Arduino.sensebox_sensor_pressure = function() {
 Blockly.Arduino.definitions_['define_senseBox'] = '#include <SenseBox.h>\n';
 Blockly.Arduino.definitions_['define_pressure'] = 'BMP280 bmp_sensor;';
-Blockly.Arduino.setups_['sensebox_lux_sensor'] = 'bmp_sensor.begin();';
+Blockly.Arduino.setups_['sensebox_bmp_sensor'] = 'bmp_sensor.begin();';
   var code ='bmp_sensor.getPressure()';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
