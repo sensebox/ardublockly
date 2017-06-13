@@ -67,7 +67,6 @@ install:
 
   # Build and pack Ardublockly
   - cmd: cd blockly && %PYTHON%\python build.py && cd ..\
-  - cmd: "%PYTHON3%\\python package\\build_docs.py"
   - cmd: "%PYTHON3%\\python package\\build_pyinstaller.py windows"
   - cmd: cd package\electron && npm install && cd ..\..\
   - cmd: cd package\electron && npm run release && cd ..\..\
