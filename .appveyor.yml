@@ -93,7 +93,7 @@ before_deploy:
 
 deploy:
   release: myproduct-v$(appveyor_build_version)
-  description: 'Release description'
+  description: 'Windows Release'
   provider: GitHub
   auth_token:
     secure: /ao7fuLRVZi8wGTWomYJqXYNwpO0Ixh+RpHCC4xGrtGhagOyy7nzSmTzSjNNJJH6 # your encrypted token from GitHub
@@ -102,4 +102,3 @@ deploy:
   prerelease: false
   on:
     branch: master                 # release from master branch only
-    appveyor_repo_tag: true        # deploy on tag push only
