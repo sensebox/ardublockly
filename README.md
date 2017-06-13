@@ -29,7 +29,7 @@ The desktop application is available for Windows and Mac and runs as a stand-alo
 You will also need the [Arduino IDE version 1.6.x or higher][2].
 
 | Windows build       | Mac OS X build       |
-|:-------------------:|:-------------------:|:--------------------:|
+|:-------------------:|:-------------------:|
 | [![Windows Build status](https://ci.appveyor.com/api/projects/status/t877g920hdiifc2i?svg=true)](https://ci.appveyor.com/project/carlosperate/ardublockly) | [![Mac Build Status](https://travis-ci.org/carlosperate/ardublockly.svg?branch=master)](https://travis-ci.org/carlosperate/ardublockly) |
 | [Download Link][13] | [Download Link][14]  |
 
