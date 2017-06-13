@@ -23,16 +23,6 @@ Ardublockly is still under development and a few features are not yet implemente
 Currently tested under Windows with Python 2.7 and 3.4 and in Linux and MacOS X with Python 2.7.
 
 
-## Installing
-The desktop application is available for Windows and Mac and runs as a stand-alone executable that can be downloaded from the [Repository releases page][4].
-
-You will also need the [Arduino IDE version 1.6.x or higher][2].
-
-| Windows build       | Mac OS X build       |
-|:-------------------:|:-------------------:|
-| [![Windows Build status](https://ci.appveyor.com/api/projects/status/t877g920hdiifc2i?svg=true)](https://ci.appveyor.com/project/carlosperate/ardublockly) | [![Mac Build Status](https://travis-ci.org/carlosperate/ardublockly.svg?branch=master)](https://travis-ci.org/carlosperate/ardublockly) |
-| [Download Link][13] | [Download Link][14]  |
-
 #### "Core version" (Python server only)
 If you prefer, the core software can be used by running only the Python server, which loads the web interface on your local browser (Chrome recommended).
 
@@ -50,8 +40,11 @@ This will work on Windows, Linux (including ARM) and Mac OS X, with Python >2.7 
 ## Running
 1. [Install Ardublockly][5].
 2. Install the [Arduino IDE][2] version 1.6.x or higher (latest version is always recommended).
-3. Run Ardublockly as defined in your installation method.
-3. Configure Ardublockly to locate the Arduino IDE [following these instructions][6].
+3. The quick version: Clone this repository, initialise all submodules, and execute:
+```
+python start.py
+```
+4. Configure Ardublockly to locate the Arduino IDE [following these instructions][6].
 
 
 ## Credit
