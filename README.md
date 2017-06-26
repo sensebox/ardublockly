@@ -46,6 +46,14 @@ python start.py
 ```
 4. Configure Ardublockly to locate the Arduino IDE [following these instructions][6].
 
+## Building packaged executables
+It is possible to package ardublockly, so no external dependencies (eg python, a browser) are required.
+The build steps as described [here](https://github.com/carlosperate/ardublockly/wiki/Building-Ardublockly) are implemented in the scripts `build_fullpackage.sh` (linux, macos) & `build_fullpackage.bat` (windows).
+These scripts require `python` and `npm` to be installed and in the `$PATH`.
+
+To run, doubleclick the script or run `./build_fullpackage.sh` in the projects root directory.
+The resulting zip-package will reside in `./releases`.
+It is only possible to build for the current platform, so no windows-builds on linux.. :^/
 
 ## Credit
 Thanks to [carlosperate](https://github.com/carlosperate) who used build the fantanstic interface inspired by BlocklyDuino.
