@@ -12,7 +12,7 @@ var Ardublockly = Ardublockly || {};
 Ardublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
-'<category id="senseBox_Sensor" name="senseBox Sensoren">' +
+'<category id="senseBox_Sensor" name="senseBox Sensoren" colour="120">' +
 '      <block type="sensebox_sensor_temp_hum"></block>' +
 '      <block type="sensebox_sensor_lux"></block>' +
 '      <block type="sensebox_sensor_uv"></block>' +
@@ -23,8 +23,9 @@ Ardublockly.TOOLBOX_XML =
 '      <block type="sensebox_foto"></block>' +
 '      <block type="sensebox_button"></block>' +
 '      <block type="sensebox_poti"></block>' +
+'      <block type="sensebox_time"></block>' +
 '    </category>' +
-'    <category id="senseBox_basics" name="senseBox Grundlagen">' +
+'   <category id="senseBox_output" name="senseBox Ausgabe" colour="120">' +
 '      <block type="sensebox_led"></block>' +
 '      <block type="sensebox_piezo_buzzer"></block>' +
 '      <block type="sensebox_rgb_led">' +
@@ -44,16 +45,13 @@ Ardublockly.TOOLBOX_XML =
 '          </block>' +
 '        </value>' +
 '      </block>' +
-'    </category>' +
-'   <category id="senseBox_output" name="senseBox Ausgabe">' +
-'      <block type="sensebox_time"></block>' +
 '      <block type="sensebox_safe_to_sd"></block>' +
 '      <block type="sensebox_serial_print"></block>' +
 '      <block type="sensebox_shield_wifi"></block>' +
 '      <block type="sensebox_shield_ethernet"></block>'+
 '   </category>' +
 '  <sep></sep>' +
-'  <category id="catLogic" name="Logic">' +
+'  <category id="catLogic" name="Logic" colour="210">' +
 '    <block type="controls_if"></block>' +
 '    <block type="logic_compare"></block>' +
 '    <block type="logic_operation"></block>' +
@@ -63,7 +61,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="logic_ternary"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catLoops" name="Loops">' +
+'  <category id="catLoops" name="Loops" colour="10">' +
 '    <block type="controls_repeat_ext">' +
 '      <value name="TIMES">' +
 '        <block type="math_number">' +
@@ -92,7 +90,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="controls_flow_statements"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catMath" name="Math">' +
+'  <category id="catMath" name="Math" colour="230">' +
 '    <block type="math_number"></block>' +
 '    <block type="math_arithmetic"></block>' +
 '    <block type="math_single"></block>' +
@@ -136,7 +134,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="base_map"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catText" name="Text">' +
+'  <category id="catText" name="Text" colour="160">' +
 '    <block type="text"></block>' +
 '    <block type="text_join"></block>' +
 '    <block type="text_append">' +
@@ -150,7 +148,7 @@ Ardublockly.TOOLBOX_XML =
 //'    <!--block type="text_print"></block Part of the serial comms -->' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catVariables" name="Variables">' +
+'  <category id="catVariables" name="Variables" colour="330">' +
 '    <block type="variables_get"></block>' +
 '    <block type="variables_set"></block>' +
 '    <block type="variables_set">' +
@@ -161,9 +159,9 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="variables_set_type"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catFunctions" name="Functions" custom="PROCEDURE"></category>' +
+'  <category id="catFunctions" name="Functions" custom="PROCEDURE" colour="290"></category>' +
 '  <sep></sep>' +
-'  <category id="catInputOutput" name="Input/Output">' +
+'  <category id="catInputOutput" name="Input/Output" colour="250">' +
 '    <block type="io_digitalwrite">' +
 '      <value name="STATE">' +
 '        <block type="io_highlow"></block>' +
@@ -195,7 +193,7 @@ Ardublockly.TOOLBOX_XML =
 '    </block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catTime" name="Time">' +
+'  <category id="catTime" name="Time" colour="140">' +
 '    <block type="time_delay">' +
 '      <value name="DELAY_TIME_MILI">' +
 '        <block type="math_number">' +
@@ -215,7 +213,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="infinite_loop"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catAudio" name="Audio">' +
+'  <category id="catAudio" name="Audio" colour="250">' +
 '    <block type="io_tone">' +
 '      <field name="TONEPIN">0</field>' +
 '      <value name="FREQUENCY">' +
@@ -227,7 +225,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="io_notone"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catMotors" name="Motors">' +
+'  <category id="catMotors" name="Motors" colour="60">' +
 '    <block type="servo_write">' +
 '      <value name="SERVO_ANGLE">' +
 '        <block type="math_number">' +
@@ -260,7 +258,7 @@ Ardublockly.TOOLBOX_XML =
 '    </block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catComms" name="Comms">' +
+'  <category id="catComms" name="Comms" colour="160">' +
 '    <block type="serial_setup"></block>' +
 '    <block type="serial_print"></block>' +
 '    <block type="text_prompt_ext">' +
