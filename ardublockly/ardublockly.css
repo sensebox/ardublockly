@@ -673,7 +673,7 @@ ul.side-nav li.side-menu-end {
 }
 .blocklyTreeRow {
   background: none !important;
-  border: none !important;
+  /*border: none !important;*/
   margin: 0px 0px !important;
   padding: 7px 16px 7px 0px !important;
   box-sizing: content-box !important;
