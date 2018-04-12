@@ -92,16 +92,17 @@ test_script:
 
 # Push artefact to S3 bucket and list all
 before_deploy:
-  - ps: Get-ChildItem .\releases\*.zip | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name -DeploymentName ardublockly-s3-deployment }
+  - ps: Get-ChildItem .\releases\*.zip | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name -DeploymentName ardublockly-github-release }
   - ps: foreach($artifactName in $artifacts.keys) { $artifacts[$artifactName] }
 
 deploy:
+  name: ardublockly-github-release
   release: myproduct-v$(appveyor_build_version)
   description: 'Windows Release'
   provider: GitHub
   auth_token:
     secure: IczSQzH76tWcuFUXXEhrkZ2fBpHgcLblRtRWYV/vCpQbhWeJKZjby2Yvymr//rpH # your encrypted token from GitHub
-  artifact: .\releases\*.zip            # upload all generated packages to release assets
+  # artifact: .\releases\*.zip            # upload all generated packages to release assets
   draft: false
   prerelease: false
   on:
