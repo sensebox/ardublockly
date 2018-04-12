@@ -56,7 +56,7 @@ install:
 
   # Install Python packages
   - cmd: "%PIP% install pywin32"
-  - cmd: "%PIP3% install pywin32"
+  # - cmd: "%PIP3% install pywin32"
   - cmd: "%PIP3% install pyinstaller"
   - cmd: "%PIP3% install mkdocs"
   #- cmd: "%PIP3% install pydocstyle"
