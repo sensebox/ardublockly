@@ -53,7 +53,7 @@ install:
   - cmd: git submodule update --init --recursive
 
   # Install Python packages
-  - cmd: "%PIP3% install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip"
+  - cmd: "%PIP3% install pyinstaller"
   - cmd: "%PIP3% install mkdocs"
   #- cmd: "%PIP3% install pydocstyle"
   - cmd: "%PIP3% install coverage"
