@@ -10,11 +10,11 @@ command -v npm >/dev/null 2>&1 || { echo "I require node.js and npm but it's not
 
 # build frontend
 cd blockly
-python build.py
+python2.7 build.py
 cd ..
 
 # package backend into executable
-python package/build_pyinstaller.py
+python2.7 package/build_pyinstaller.py
 
 # package frontend into electron app
 cd package/electron
@@ -23,6 +23,6 @@ npm run release
 cd ../..
 
 # build zip package for both components
-python package/pack_ardublockly.py
+python2.7 package/pack_ardublockly.py
 
 echo "done! release in directory ./releases/"

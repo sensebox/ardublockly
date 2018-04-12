@@ -56,7 +56,7 @@ install:
 
   # Install Python packages
   - cmd: "%PIP% install pywin32"
-  - cmd: "%PIP3% install https://pypi.python.org/packages/a0/76/89b836562a36929bb913f9c17fca54fdd2c68b5e97ec0d626a389c087150/pywin32-223-cp27-cp27m-win32.whl#md5=f25f866c8d76a1854affc34ab214cd7e"
+  - cmd: "%PIP3% install https://pypi.python.org/packages/68/76/c3457dfe31c5a6c4fc3687d012a89c769d52129f19584415309aa0339a31/pypiwin32-219-cp34-none-win32.whl#md5=d1064ebb932294271b883ffdb369c640"
   - cmd: "%PIP3% install pyinstaller"
   - cmd: "%PIP3% install mkdocs"
   #- cmd: "%PIP3% install pydocstyle"
