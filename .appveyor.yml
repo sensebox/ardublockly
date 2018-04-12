@@ -100,7 +100,7 @@ deploy:
   description: 'Windows Release'
   provider: GitHub
   auth_token:
-    secure: /ao7fuLRVZi8wGTWomYJqXYNwpO0Ixh+RpHCC4xGrtGhagOyy7nzSmTzSjNNJJH6 # your encrypted token from GitHub
+    secure: IczSQzH76tWcuFUXXEhrkZ2fBpHgcLblRtRWYV/vCpQbhWeJKZjby2Yvymr//rpH # your encrypted token from GitHub
   artifact: /.*\.nupkg/            # upload all NuGet packages to release assets
   draft: false
   prerelease: false
