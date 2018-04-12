@@ -47,14 +47,16 @@ init:
   - cmd: node --version
   - cmd: node -p "process.arch"
   - cmd: npm --version
-  - cmd: pip search pywin32
+  - cmd: "%PIP3% search pywin32"
+  - cmd: "%PIP% search pywin32"
 
 install:
   # Git clone happens between init and install 
   - cmd: git submodule update --init --recursive
 
   # Install Python packages
-  - cmd: "%PIP3% install pywin32==219"
+  - cmd: "%PIP% install pywin32"
+  - cmd: "%PIP3% install pywin32"
   - cmd: "%PIP3% install pyinstaller"
   - cmd: "%PIP3% install mkdocs"
   #- cmd: "%PIP3% install pydocstyle"

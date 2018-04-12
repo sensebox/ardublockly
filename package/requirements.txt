@@ -1,3 +1,2 @@
 mkdocs>=0.15.3
-pyinstaller==3.2.1
-pywin32==219
+pyinstaller>=3.2.1
